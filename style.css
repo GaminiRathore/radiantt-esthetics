@@ -89,8 +89,8 @@ nav.scrolled{background-color:var(--forest);backdrop-filter:blur(12px)}
 .gate-card p{font-size:.9rem;line-height:1.7;color:rgba(255,255,255,.75);margin-bottom:1.6rem}
 .gate-card .gate-link{font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
 .gate-card .gate-link::after{content:' \2192'}
-.gate-card--esthetics{background-image:url(face.webp)}
-.gate-card--academy{background-image:url("academy gallery/academy2.webp")}
+.gate-card--esthetics{background-image:url(clinic_homepage.webp)}
+.gate-card--academy{background-image:url(academy_homepage.webp)}
 @media(prefers-reduced-motion:reduce){.gate-card{opacity:1;transform:none;transition:none}}
 .gateway{padding:5rem 3rem;background:var(--light);text-align:center}
 .treatments{padding:5.5rem 3rem;background:var(--white)}
