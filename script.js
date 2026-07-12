@@ -38,6 +38,22 @@ document.querySelectorAll('.awards-strip, .client-strip, .test-strip').forEach(s
   strip.addEventListener('touchcancel', () => reel.classList.remove('paused'), { passive: true });
 });
 
+// Gate cards (home) — enter on scroll into view
+const gateCards = document.querySelectorAll('.gate-card');
+if (gateCards.length && 'IntersectionObserver' in window) {
+  const gateObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  gateCards.forEach(card => gateObserver.observe(card));
+} else {
+  gateCards.forEach(card => card.classList.add('is-visible'));
+}
+
 // Smooth-scroll for in-page anchors
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {

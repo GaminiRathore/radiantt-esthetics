@@ -79,13 +79,20 @@ nav.scrolled{background-color:var(--forest);backdrop-filter:blur(12px)}
 .award-title{font-size:.85rem;font-weight:600;color:var(--forest);margin-bottom:.3rem}
 .award-desc{font-size:.76rem;color:rgba(22,56,50,.62);line-height:1.5}
 .dual-gateway{padding:6rem 3rem;background:var(--light);display:grid;grid-template-columns:1fr 1fr;gap:2rem}
-.gate-card{position:relative;padding:3.5rem 3rem;background:linear-gradient(155deg,var(--forest2),var(--forest) 60%);border-top:3px solid var(--gold);overflow:hidden;text-decoration:none;display:block;transition:transform .3s,box-shadow .3s}
-.gate-card:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.18)}
+.gate-card{position:relative;min-height:360px;padding:3.5rem 3rem;display:flex;flex-direction:column;justify-content:flex-end;background-size:cover;background-position:center;border-top:3px solid var(--gold);overflow:hidden;text-decoration:none;isolation:isolate;opacity:0;transform:translateY(48px);transition:opacity .8s cubic-bezier(.16,.84,.44,1),transform .8s cubic-bezier(.16,.84,.44,1)}
+.gate-card::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(155deg,rgba(22,56,50,.94),rgba(22,56,50,.55) 55%,rgba(22,56,50,.82));transition:background .4s}
+.gate-card.is-visible{opacity:1;transform:translateY(0)}
+.gate-card.is-visible:nth-child(2){transition-delay:.15s}
+.gate-card:hover{transition:transform .3s,box-shadow .3s;transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.28)}
+.gate-card:hover::before{background:linear-gradient(155deg,rgba(22,56,50,.85),rgba(22,56,50,.42) 55%,rgba(22,56,50,.72))}
 .gate-card .lbl{color:var(--gold)}
 .gate-card h3{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:#fff;margin-bottom:.8rem}
-.gate-card p{font-size:.9rem;line-height:1.7;color:rgba(255,255,255,.6);margin-bottom:1.6rem}
+.gate-card p{font-size:.9rem;line-height:1.7;color:rgba(255,255,255,.75);margin-bottom:1.6rem}
 .gate-card .gate-link{font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
 .gate-card .gate-link::after{content:' \2192'}
+.gate-card--esthetics{background-image:url(face.webp)}
+.gate-card--academy{background-image:url("academy gallery/academy2.webp")}
+@media(prefers-reduced-motion:reduce){.gate-card{opacity:1;transform:none;transition:none}}
 .gateway{padding:5rem 3rem;background:var(--light);text-align:center}
 .treatments{padding:5.5rem 3rem;background:var(--white)}
 .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem;margin-top:3rem}
