@@ -128,9 +128,11 @@ if (lb) {
 
   const arGroup = buildGroup('.ar-item');
   const galGroup = buildGroup('.acad-gal-item');
+  const clientGroup = buildGroup('.client-item');
 
   arGroup.forEach((btn, i) => btn.addEventListener('click', () => openLb(arGroup, i)));
   galGroup.forEach((btn, i) => btn.addEventListener('click', () => openLb(galGroup, i)));
+  clientGroup.forEach((btn, i) => btn.addEventListener('click', () => openLb(clientGroup, i)));
 
   lbClose.addEventListener('click', closeLb);
   if (lbPrev) lbPrev.addEventListener('click', e => { e.stopPropagation(); goto(idx - 1); });

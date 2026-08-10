@@ -116,7 +116,9 @@ nav.scrolled{background-color:var(--forest);backdrop-filter:blur(12px)}
 .client-reel{display:flex;gap:1.2rem;width:max-content;animation:reel-scroll 26s linear infinite}
 .client-strip:hover .client-reel{animation-play-state:paused}
 .client-reel.paused{animation-play-state:paused}
-.client-item{flex-shrink:0;width:200px;height:260px;background:var(--forest2);border-radius:2px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3)}
+.client-item{flex-shrink:0;width:200px;height:260px;background:var(--forest2);border-radius:2px;border:none;padding:0;cursor:pointer;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.client-item:hover{transform:scale(1.03);box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.client-item img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
 .testimonials{padding:6rem 0 6rem 3rem;background:var(--sand);overflow:hidden}
 .testimonials .lbl{color:var(--gold-deep)}
 .testimonials .sec-title{padding-right:3rem}
