@@ -12,23 +12,6 @@ document.querySelectorAll('.faq-q').forEach(q => {
   });
 });
 
-// Service flip cards — hover flips on pointer devices, tap flips on touch devices
-const canHover = window.matchMedia('(hover: hover)').matches;
-document.querySelectorAll('.service-flip').forEach(card => {
-  if (canHover) {
-    card.addEventListener('mouseenter', () => card.classList.add('flipped'));
-    card.addEventListener('mouseleave', () => card.classList.remove('flipped'));
-  } else {
-    card.addEventListener('click', () => card.classList.toggle('flipped'));
-  }
-  card.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      card.classList.toggle('flipped');
-    }
-  });
-});
-
 // Auto-scrolling marquees (awards, happy clients, testimonials) — pause on touch as well as hover
 document.querySelectorAll('.awards-strip, .client-strip, .test-strip').forEach(strip => {
   const reel = strip.querySelector('.awards-reel, .client-reel, .test-reel');

@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=31">
+<link rel="stylesheet" href="style.css?v=32">
 </head>
 <body class="clinic">
 <nav id="nav">
@@ -39,85 +39,53 @@
 <section class="treatments" id="treatments">
   <div class="lbl">What We Offer</div><h2 class="sec-title">Our Treatments</h2>
   <div class="services-grid">
-    <div class="service-flip" tabindex="0" role="button" aria-label="Face treatments, tap to view sub-services">
-      <div class="service-flip-inner">
-        <div class="service-flip-front">
-          <img src="face.webp" alt="Face treatments">
-          <div class="service-flip-name">Face</div>
-        </div>
-        <div class="service-flip-back">
-          <div class="lbl">Face</div>
-          <ul class="service-back-list">
-            <li>Botox</li>
-            <li>Acne Treatment</li>
-            <li>Anti-Aging Treatment</li>
-            <li>HydraFacial</li>
-            <li>Hyperpigmentation Treatment</li>
-            <li>Tan Removal</li>
-            <li>Double Chin Contouring</li>
-            <li>Dark Circle &amp; Eye Bag Treatment</li>
-            <li>HIFU</li>
-            <li>Melasma Treatment</li>
-            <li>Fractional CO2 Laser</li>
-            <li>Fillers &mdash; Mid-Face</li>
-          </ul>
-        </div>
-      </div>
+    <div class="service-card">
+      <div class="service-card-media"><img src="face.webp" alt="Face treatments"><div class="service-card-name">Face</div></div>
+      <ul class="service-card-list">
+        <li>Botox</li>
+        <li>Acne Treatment</li>
+        <li>Anti-Aging Treatment</li>
+        <li>HydraFacial</li>
+        <li>Hyperpigmentation Treatment</li>
+        <li>Tan Removal</li>
+        <li>Double Chin Contouring</li>
+        <li>Dark Circle &amp; Eye Bag Treatment</li>
+        <li>HIFU</li>
+        <li>Melasma Treatment</li>
+        <li>Fractional CO2 Laser</li>
+        <li>Fillers &mdash; Mid-Face</li>
+      </ul>
     </div>
-    <div class="service-flip" tabindex="0" role="button" aria-label="Skin treatments, tap to view sub-services">
-      <div class="service-flip-inner">
-        <div class="service-flip-front">
-          <img src="skin.webp" alt="Skin treatments">
-          <div class="service-flip-name">Skin</div>
-        </div>
-        <div class="service-flip-back">
-          <div class="lbl">Skin</div>
-          <ul class="service-back-list">
-            <li>Skin Pigmentation</li>
-            <li>Facial Peels</li>
-            <li>Skin Rejuvenation Treatment</li>
-            <li>Q-Switch Laser</li>
-            <li>Tattoo Removal</li>
-            <li>Birth Mark Removal</li>
-            <li>Open Pores Treatment</li>
-            <li>Skin Whitening</li>
-          </ul>
-        </div>
-      </div>
+    <div class="service-card">
+      <div class="service-card-media"><img src="skin.webp" alt="Skin treatments"><div class="service-card-name">Skin</div></div>
+      <ul class="service-card-list">
+        <li>Skin Pigmentation</li>
+        <li>Facial Peels</li>
+        <li>Skin Rejuvenation Treatment</li>
+        <li>Q-Switch Laser</li>
+        <li>Tattoo Removal</li>
+        <li>Birth Mark Removal</li>
+        <li>Open Pores Treatment</li>
+        <li>Skin Whitening</li>
+      </ul>
     </div>
-    <div class="service-flip" tabindex="0" role="button" aria-label="Hair treatments, tap to view sub-services">
-      <div class="service-flip-inner">
-        <div class="service-flip-front">
-          <img src="hair.webp" alt="Hair treatments">
-          <div class="service-flip-name">Hair</div>
-        </div>
-        <div class="service-flip-back">
-          <div class="lbl">Hair</div>
-          <ul class="service-back-list">
-            <li>Hair Loss &amp; Alopecia Treatment</li>
-            <li>PRP Therapy</li>
-            <li>Scalp Psoriasis Treatment</li>
-          </ul>
-        </div>
-      </div>
+    <div class="service-card">
+      <div class="service-card-media"><img src="hair.webp" alt="Hair treatments"><div class="service-card-name">Hair</div></div>
+      <ul class="service-card-list">
+        <li>Hair Loss &amp; Alopecia Treatment</li>
+        <li>PRP Therapy</li>
+        <li>Scalp Psoriasis Treatment</li>
+      </ul>
     </div>
-    <div class="service-flip" tabindex="0" role="button" aria-label="Body treatments, tap to view sub-services">
-      <div class="service-flip-inner">
-        <div class="service-flip-front">
-          <img src="body.webp" alt="Body treatments">
-          <div class="service-flip-name">Body</div>
-        </div>
-        <div class="service-flip-back">
-          <div class="lbl">Body</div>
-          <ul class="service-back-list">
-            <li>Body Contouring</li>
-            <li>Laser Hair Removal</li>
-            <li>Stretch Marks Treatment</li>
-            <li>Laser Toning</li>
-            <li>IV Drops</li>
-          </ul>
-        </div>
-      </div>
+    <div class="service-card">
+      <div class="service-card-media"><img src="body.webp" alt="Body treatments"><div class="service-card-name">Body</div></div>
+      <ul class="service-card-list">
+        <li>Body Contouring</li>
+        <li>Laser Hair Removal</li>
+        <li>Stretch Marks Treatment</li>
+        <li>Laser Toning</li>
+        <li>IV Drops</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -199,6 +167,6 @@
     <a href="terms.html">Terms of Use</a>
   </div>
 </footer>
-<script src="script.js?v=8"></script>
+<script src="script.js?v=9"></script>
 </body>
 </html>
