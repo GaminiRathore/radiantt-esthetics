@@ -13,7 +13,7 @@ document.querySelectorAll('.faq-q').forEach(q => {
 });
 
 // Auto-scrolling marquees (awards, happy clients, testimonials) — pause on touch as well as hover
-document.querySelectorAll('.awards-strip, .client-strip, .test-strip').forEach(strip => {
+document.querySelectorAll('.awards-strip, .client-strip, .test-strip, .acad-gallery-strip').forEach(strip => {
   const reel = strip.querySelector('.awards-reel, .client-reel, .test-reel');
   if (!reel) return;
   strip.addEventListener('touchstart', () => reel.classList.add('paused'), { passive: true });
