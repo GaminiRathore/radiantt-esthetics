@@ -57,6 +57,7 @@ document.getElementById('mobileClose').onclick = () => document.getElementById('
 const lb = document.getElementById('lb');
 if (lb) {
   const lbImg = document.getElementById('lbImg');
+  const lbVideo = document.getElementById('lbVideo');
   const lbClose = document.getElementById('lbClose');
   const lbPrev = document.getElementById('lbPrev');
   const lbNext = document.getElementById('lbNext');
@@ -69,11 +70,27 @@ if (lb) {
     if (lbCounter) lbCounter.textContent = items.length > 1 ? `${idx + 1} / ${items.length}` : '';
   };
 
+  const showItem = () => {
+    const item = items[idx];
+    const videoSrc = item.dataset.video;
+    if (videoSrc && lbVideo) {
+      lbImg.hidden = true;
+      lbVideo.hidden = false;
+      lbVideo.src = videoSrc;
+      lbVideo.currentTime = 0;
+      lbVideo.play().catch(() => {});
+    } else {
+      if (lbVideo) { lbVideo.pause(); lbVideo.removeAttribute('src'); lbVideo.load(); lbVideo.hidden = true; }
+      lbImg.hidden = false;
+      lbImg.src = item.dataset.src;
+    }
+  };
+
   const goto = (n) => {
     idx = (n + items.length) % items.length;
     lbImg.classList.add('lb-fade');
     setTimeout(() => {
-      lbImg.src = items[idx].dataset.src;
+      showItem();
       lbImg.classList.remove('lb-fade');
     }, 180);
     setCounter();
@@ -82,7 +99,7 @@ if (lb) {
   const openLb = (group, startIdx) => {
     items = group;
     idx = startIdx;
-    lbImg.src = items[idx].dataset.src;
+    showItem();
     setCounter();
     const showNav = items.length > 1;
     if (lbPrev) lbPrev.style.display = showNav ? '' : 'none';
@@ -95,6 +112,8 @@ if (lb) {
     lb.setAttribute('hidden', '');
     lbImg.src = '';
     lbImg.classList.remove('lb-fade');
+    if (lbVideo) { lbVideo.pause(); lbVideo.removeAttribute('src'); lbVideo.load(); lbVideo.hidden = true; }
+    lbImg.hidden = false;
     document.body.style.overflow = '';
   };
 
