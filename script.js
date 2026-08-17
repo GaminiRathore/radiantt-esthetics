@@ -12,14 +12,79 @@ document.querySelectorAll('.faq-q').forEach(q => {
   });
 });
 
-// Auto-scrolling marquees (awards, happy clients, testimonials) — pause on touch as well as hover
-document.querySelectorAll('.awards-strip, .client-strip, .acad-gallery-strip').forEach(strip => {
-  const reel = strip.querySelector('.awards-reel, .client-reel');
-  if (!reel) return;
-  strip.addEventListener('touchstart', () => reel.classList.add('paused'), { passive: true });
-  strip.addEventListener('touchend', () => reel.classList.remove('paused'), { passive: true });
-  strip.addEventListener('touchcancel', () => reel.classList.remove('paused'), { passive: true });
-});
+// Auto-scrolling marquees (awards, happy clients, academy gallery) that are also swipeable/draggable.
+// Native touch scrolling handles mobile swipe; mouse drag is added for desktop. Auto-scroll pauses
+// while the user is interacting and resumes shortly after they let go.
+function makeAutoSwipeReel(stripSelector, reelSelector, targetDurationSec) {
+  document.querySelectorAll(stripSelector).forEach(strip => {
+    const reel = strip.querySelector(reelSelector);
+    if (!reel) return;
+
+    let paused = false;
+    let resumeTimer = null;
+    const pauseFor = (ms) => {
+      paused = true;
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(() => { paused = false; }, ms);
+    };
+
+    // Mouse drag-to-scroll
+    let isDown = false, startX = 0, startScroll = 0, dragMoved = 0;
+    strip.addEventListener('mousedown', e => {
+      isDown = true;
+      strip.classList.add('dragging');
+      startX = e.pageX;
+      startScroll = strip.scrollLeft;
+      dragMoved = 0;
+      paused = true;
+      clearTimeout(resumeTimer);
+    });
+    window.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      const dx = e.pageX - startX;
+      dragMoved = Math.max(dragMoved, Math.abs(dx));
+      strip.scrollLeft = startScroll - dx;
+    });
+    window.addEventListener('mouseup', () => {
+      if (!isDown) return;
+      isDown = false;
+      strip.classList.remove('dragging');
+      pauseFor(1500);
+    });
+    // Suppress the click-to-open-lightbox if this mouseup ended a real drag
+    strip.addEventListener('click', e => {
+      if (dragMoved > 5) { e.stopPropagation(); e.preventDefault(); }
+      dragMoved = 0;
+    }, true);
+
+    // Touch / wheel interaction just pauses auto-scroll; native scrolling does the rest
+    strip.addEventListener('touchstart', () => { paused = true; clearTimeout(resumeTimer); }, { passive: true });
+    strip.addEventListener('touchend', () => pauseFor(1500), { passive: true });
+    strip.addEventListener('touchcancel', () => pauseFor(1500), { passive: true });
+    strip.addEventListener('wheel', () => pauseFor(1500), { passive: true });
+    strip.addEventListener('mouseenter', () => { paused = true; });
+    strip.addEventListener('mouseleave', () => { if (!isDown) pauseFor(300); });
+
+    let last = null;
+    const tick = (now) => {
+      if (last === null) last = now;
+      const dt = (now - last) / 1000;
+      last = now;
+      const half = reel.scrollWidth / 2;
+      if (!paused && half > 0) {
+        const speed = half / targetDurationSec;
+        strip.scrollLeft += speed * dt;
+        if (strip.scrollLeft >= half) strip.scrollLeft -= half;
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+}
+makeAutoSwipeReel('.awards-strip', '.awards-reel', 110);
+makeAutoSwipeReel('.client-strip', '.client-reel', 42);
+makeAutoSwipeReel('.acad-gallery-strip', '.acad-gallery-reel', 70);
 
 // Testimonials — swipeable/scrollable carousel with arrow buttons
 const testReel = document.getElementById('testReel');
