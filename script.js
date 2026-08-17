@@ -13,13 +13,28 @@ document.querySelectorAll('.faq-q').forEach(q => {
 });
 
 // Auto-scrolling marquees (awards, happy clients, testimonials) — pause on touch as well as hover
-document.querySelectorAll('.awards-strip, .client-strip, .test-strip, .acad-gallery-strip').forEach(strip => {
-  const reel = strip.querySelector('.awards-reel, .client-reel, .test-reel');
+document.querySelectorAll('.awards-strip, .client-strip, .acad-gallery-strip').forEach(strip => {
+  const reel = strip.querySelector('.awards-reel, .client-reel');
   if (!reel) return;
   strip.addEventListener('touchstart', () => reel.classList.add('paused'), { passive: true });
   strip.addEventListener('touchend', () => reel.classList.remove('paused'), { passive: true });
   strip.addEventListener('touchcancel', () => reel.classList.remove('paused'), { passive: true });
 });
+
+// Testimonials — swipeable/scrollable carousel with arrow buttons
+const testReel = document.getElementById('testReel');
+const testPrev = document.getElementById('testPrev');
+const testNext = document.getElementById('testNext');
+if (testReel && testPrev && testNext) {
+  const scrollByCard = (dir) => {
+    const card = testReel.querySelector('.test-card');
+    if (!card) return;
+    const gap = parseFloat(getComputedStyle(testReel).columnGap || getComputedStyle(testReel).gap) || 0;
+    testReel.scrollBy({ left: (card.getBoundingClientRect().width + gap) * dir, behavior: 'smooth' });
+  };
+  testPrev.addEventListener('click', () => scrollByCard(-1));
+  testNext.addEventListener('click', () => scrollByCard(1));
+}
 
 // Gate cards (home) — enter on scroll into view
 const gateCards = document.querySelectorAll('.gate-card');
