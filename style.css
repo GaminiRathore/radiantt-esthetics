@@ -240,6 +240,9 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.3)}
 footer .foot-links{display:flex;gap:1.5rem}
 footer .foot-links a{font-size:.72rem;color:rgba(255,255,255,.45);text-decoration:none;letter-spacing:.06em;transition:color .2s}
 footer .foot-links a:hover{color:var(--gold)}
+footer .foot-credit{width:100%;text-align:center;font-size:.68rem;color:rgba(255,255,255,.22);letter-spacing:.04em}
+footer .foot-credit a{color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s}
+footer .foot-credit a:hover{color:var(--gold)}
 .ham{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:.3rem;background:none;border:none}
 .ham span{width:18px;height:1.5px;background:#fff;display:block}
 .mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--forest);z-index:250;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
