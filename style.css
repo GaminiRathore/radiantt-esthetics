@@ -150,6 +150,11 @@ nav.scrolled{background-color:var(--forest);backdrop-filter:blur(12px)}
 .faq-item.open .faq-icon{transform:rotate(45deg)}
 .booking{padding:6rem 3rem;background:var(--cream)}
 .booking-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.wa-cta{display:flex;align-items:center;gap:.9rem;margin-top:1.8rem;flex-wrap:wrap}
+.wa-btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 1.7rem;background:#25D366;color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:background .25s,transform .25s}
+.wa-btn:hover{background:#1eb958;transform:translateY(-1px)}
+.wa-btn svg{width:18px;height:18px;flex-shrink:0}
+.wa-note{font-size:.8rem;color:var(--gray)}
 .info-block{margin-top:2.5rem;padding:2rem;background:var(--forest);color:#fff}
 .info-block .lbl{color:var(--gold)}
 .info-block p{font-size:.88rem;line-height:1.85;color:rgba(255,255,255,.65)}
